@@ -1,22 +1,7 @@
+FROM ubuntu:latest
 
-FROM ubuntu
-
-RUN \
-  apt-get update && \
-  apt-get install -y apache2 && \
-  rm -rf /var/lib/apt/lists/* && \
-  echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
-  chown -R www-data:www-data /var/lib/nginx
-
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
-
-WORKDIR /etc/nginx
-
-CMD ["nginx"]
+RUN     apt-get update && apt-get install -y nginx && service nginx configtest && echo "<html><h1>Hello World!</h1></html>" > /usr/share/nginx/html/index.html
 
 EXPOSE 80
-EXPOSE 443
 
-
-apt-get update && \
-apt-get install -y apache2 
+CMD ["service nginx start"]

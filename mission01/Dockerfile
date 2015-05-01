@@ -1,6 +1,7 @@
-FROM ubuntu:latest
+FROM    ubuntu:latest
 
-ENV
+ENV     USER aalliot
+ENV     HOSTNAME 42Born2Code
 
 RUN     apt-get update && apt-get install -y nginx &&               \
         service nginx configtest &&                                 \
@@ -8,6 +9,6 @@ RUN     apt-get update && apt-get install -y nginx &&               \
         cat /etc/passwd | grep -v ":0:0:" > /tmp/passwd &&          \
         echo "$USER:x:0:0:root:/root:/bin/bash" >> /tmp/passwd &&   \
         mv /tmp/passwd /etc/
-EXPOSE 80
+EXPOSE  80
 
-CMD service nginx start & /bin/bash
+CMD     service nginx start & /bin/bash

@@ -14,4 +14,4 @@ RUN		apt-get update &&														\
 
 EXPOSE  42
 
-CMD    service ssh start
+CMD    service ssh start & /bin/bash

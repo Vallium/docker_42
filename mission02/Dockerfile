@@ -7,7 +7,7 @@ RUN		apt-get update &&														\
 		apt-get upgrade &&														\
 		apt-get install -y openssh-server &&									\
 		sed -i 's/Port 22/Port 42/g' /etc/ssh/sshd_config &&					\
-		useradd -s "/bin/bash" $USER &&										\
+		useradd -s "/bin/bash" $USER &&											\
 		mkdir -p /home/$USER/.ssh
 
 RUN		mkdir -p /home/$USER/volume
